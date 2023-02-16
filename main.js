@@ -71,9 +71,7 @@ while (bol) {
 
 
 //6
-if(6/3==0){
-    console.log("вы ввели нfff");
-}
+
 n = prompt("Введите число n");
 x = prompt("Введите число x");
 y = prompt("Введите число y");
