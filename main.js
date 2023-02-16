@@ -54,7 +54,7 @@ console.log("||");
 let bol = true;
 count = 0, nam = 32;
 while (bol) {
-    let nam_2 = prompt("Введите число");
+    let nam_2 = prompt("отгадайте число");
     if(nam_2%1==0){
         if(nam==nam_2){
             console.log("угадано");
