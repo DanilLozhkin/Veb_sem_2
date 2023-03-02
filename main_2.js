@@ -8,9 +8,11 @@ function convertSpeed(spid, text) {
     }
 }
   
-console.log(spid_km + " км/ч соответствует " + convertSpeed(spid_km, 'toMS') + " м/с");
-console.log(spid_m + " м/с соответствует " + convertSpeed(spid_m, 'toKHM') + " км/ч");
-
+//console.log(spid_km + " км/ч соответствует " + convertSpeed(spid_km, 'toMS') + " м/с");
+//console.log(spid_m + " м/с соответствует " + convertSpeed(spid_m, 'toKHM') + " км/ч");
+// попробуйте один вывод переписать через шаблонную строку и сравнить записи
+console.log(`${spid_km} км/ч соответствует  ${convertSpeed(spid_km, 'toMS')}  м/с`);
+console.log(`${spid_m} + м/с соответствует ${convertSpeed(spid_m, 'toKHM')} + км/ч`);
 //2
 let nam = prompt("Введите число");
 function absValue(znah){
@@ -27,11 +29,8 @@ let student = {
     last_name: " Иванов",
     first_name: " Иван "
 };
-let char=" ";
-     
-for (var prop in student) char +=prop+", ";
 
-console.log("Список свойств: " + char);
+console.log("Список свойств: " + Object.keys(student));
 console.log("Студент" + student.first_name + student.last_name + "в "+ student.group + " группе");
 
 //4
@@ -45,7 +44,7 @@ console.log(randomNumber(3, 35));
 let mas_2=[];
 function sampleArray(mas, count){
     while (count>0) {
-        mas_2.push(mas[Math.floor(Math.random() * mas.length)]);
+        mas_2.push(randomNumber(0,mas.length));
         count--;
     }
     return(mas_2);
