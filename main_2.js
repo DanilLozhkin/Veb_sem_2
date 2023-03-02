@@ -24,12 +24,13 @@ console.log(absValue(nam));
 //3
 let student = {
     group: 201,
-    last_name: " Иванов ",
+    last_name: " Иванов",
     first_name: " Иван "
 };
 let char=" ";
      
 for (var prop in student) char +=prop+", ";
+
 console.log("Список свойств: " + char);
 console.log("Студент" + student.first_name + student.last_name + "в "+ student.group + " группе");
 
@@ -50,4 +51,4 @@ function sampleArray(mas, count){
     return(mas_2);
 }
 
-console.log(sampleArray([1,2,3,4], 60));
+console.log(sampleArray([1,2,3,4],32));
