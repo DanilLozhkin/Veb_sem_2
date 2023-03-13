@@ -11,8 +11,8 @@ function convertSpeed(spid, text) {
 //console.log(spid_km + " км/ч соответствует " + convertSpeed(spid_km, 'toMS') + " м/с");
 //console.log(spid_m + " м/с соответствует " + convertSpeed(spid_m, 'toKHM') + " км/ч");
 // попробуйте один вывод переписать через шаблонную строку и сравнить записи
-console.log(`${spid_km} км/ч соответствует  ${convertSpeed(spid_km, 'toMS')}  м/с`);
-console.log(`${spid_m} + м/с соответствует ${convertSpeed(spid_m, 'toKHM')} + км/ч`);
+console.log(`${spid_km} км/ч соответствует  ${convertSpeed(spid_km, 'toMS')}  м/с
+${spid_m} м/с соответствует ${convertSpeed(spid_m, 'toKHM')} км/ч`);
 //2
 let nam = prompt("Введите число");
 function absValue(znah){

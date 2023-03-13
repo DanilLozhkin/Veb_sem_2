@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root {
+    font-size: 62.5%;
+    letter-spacing: 0.2px;
+    font-family: 'Montserrat', sans-serif;
+    --primary-color: #252B42;
+    box-sizing: border-box;
+}
+
+*,
+::after,
+::before {
+    box-sizing: inherit;
+}
+
+#form-wrap {
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+#form-wrap.open {
+    transition: opacity .5s;
+    opacity: 1;
+}
+
+fieldset {
+    max-width: 80em;
+    min-width: 40em;
+    border-color: var(--quinary-color);
+    border-radius: 10px;
+    border-width: 4px;
+    display: flex;
+    justify-content: center;
+}
