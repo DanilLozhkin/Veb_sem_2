@@ -32,4 +32,5 @@ fieldset {
     border-width: 4px;
     display: flex;
     justify-content: center;
+    color: #c0c0c0;
 }
