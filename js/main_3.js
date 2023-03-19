@@ -1,77 +1,71 @@
 let formWrap = document.getElementById('form-wrap')
 let showPassword = document.getElementById('showPassword')
 let password = document.getElementById("password")
+let CHAR = ['form-wrap', 'fieldset','form','p','but','input','password','showPassword','submit'];
+let newLi = document.getElementById('p');
+let strok = '', strok_2 = '';
 
-let CHAR = ['form-wrap', 'fieldset','form','legend','but','input','password','showPassword','submit'];
-let Bool = false;
-
-
-document.body.addEventListener('click', function(e) {
-    for(let item of CHAR){
-        if(item == e.target.id){Bool=true;}
-    }
-
-   if(Bool){
-        if('but'==e.target.id){
-            formWrap.classList.add('open');
-        }
-        
-    }else{
+document.body.addEventListener('click', function (e) {
+    if ('but' == e.target.id) {
+        formWrap.classList.add('open');
+    } else if(!CHAR.includes(e.target.id)) {
         formWrap.classList.remove('open');
     }
-    Bool = false;
+    if(strok.length == 0 && strok_2.length == 0){
+        newLi.innerHTML ="всё хорошо";
+    }
+
 });
 
 
-showPassword.addEventListener("pointerdown", ()=>{
-    password.type="text"
+showPassword.addEventListener("pointerdown", () => {
+    password.type = "text"
 })
 
-showPassword.addEventListener("pointerup", ()=>{
-    password.type="password"
+showPassword.addEventListener("pointerup", () => {
+    password.type = "password"
 })
 
-let newLi = document.createElement('p');
-
-input.onblur = function() {
-    if (this.validity.typeMismatch) { 
-      this.setCustomValidity("ввод не верный. пример: SSD@gmail.com");
-      newLi.innerHTML = 'ввод не верный. пример: SSD@gmail.com';
-     
-    }else{
+input.onblur = function () {
+    if (this.validity.typeMismatch) {
+        this.setCustomValidity("ввод не верный. пример: SSD@gmail.com");
+        strok = 'ввод не верный. пример: SSD@gmail.com,   ';
+    } else {
         this.setCustomValidity("");
-        newLi.innerHTML = '';
-        
+        strok = '';
     }
-    //let f =this.value.charCode;
-    p.appendChild(newLi);
+
+    newLi.innerHTML = strok + strok_2;
+
 };
 
-password.onblur = function(){
-    if (this.validity.tooShort) { 
+password.onblur = function () {
+    if (this.validity.tooShort) {
         this.setCustomValidity("введите не мение 6 символов");
-        newLi.innerHTML = 'введите не мение 6 символов';
-    }else{
+        strok_2 = 'введите не мение 6 символов,  ';
+    } else {
         this.setCustomValidity("");
-        newLi.innerHTML = '';
+        strok_2 = '';
     }
-    if (this.value.length>12) {
-        password.value=this.value.substr(0, 12)
-        newLi.innerHTML = 'слишком большой пароль был укорочен до 12';
+    if (this.value.length > 12) {
+        password.value = this.value.substr(0, 12)
+        strok_2 = 'слишком большой пароль был укорочен до 12';
     }
-    p.appendChild(newLi);
+    newLi.innerHTML = strok + strok_2;
+    //p.appendChild(newLi);
+
 };
 
 
-form.addEventListener('submit', (event) => { 
+form.addEventListener('submit', (event) => {
     event.preventDefault();
     let formData = new FormData();
 
     formData.append('email', input.value);
     formData.append('password', password.value);
 
-    for(let [name, value] of formData) {
+    for (let [name, value] of formData) {
         console.log(`${name} = ${value}`);
-      }
-   });
-   
+    }
+});
+
