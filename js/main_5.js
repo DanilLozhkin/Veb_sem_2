@@ -5,8 +5,10 @@ const hostname = '127.0.0.1';
 const PORT = 3000;
 
 const server = http.createServer((req, res) => {
-    //console.log(req.headers['x-forwarded-for'] || req.socket.remoteAddress || null);
-    console.log(req.);
+    console.log(req.method,req.url,"/",req.httpVersion );
+    console.log("HOST:",req.socket.address().address, ":",req.socket.address().port);
+    res.end(`HI`);
+    
 });
 
 server.listen(PORT, hostname, (error) => {
@@ -14,4 +16,4 @@ server.listen(PORT, hostname, (error) => {
 });
 
 //    127.0.0.1:3000
-//   node js/main_5
+//   node js/main_4
