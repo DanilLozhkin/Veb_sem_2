@@ -81,21 +81,21 @@ form.addEventListener('submit', (event) => {
     let pyramid = new THREE.Mesh(mesh_3, material_3);
     pyramid.castShadow = true;
     pyramid.rotation.set(4.7, 0, 1);
-    pyramid.position.set(5,-5,0);
+    pyramid.position.set(10,-5,0);
     scene.add(pyramid);
 
 
-    // function render() {
-    //     requestAnimationFrame(render);
-    //     //cube.rotation.y += 0.01;
-    //     scene.rotation.y += 0.005;
-    //     renderer.render(scene, camera);
-    // }
-    // render();
+    function render() {
+        requestAnimationFrame(render);
+        //cube.rotation.y += 0.01;
+        //scene.rotation.y += 0.005;
+        renderer.render(scene, camera);
+    }
+    render();
 
     //свет 1
     let light = new THREE.PointLight(0xffffff, litning_1.value);
-    light.position.set(0, 30, -8);
+    light.position.set(0, 30, -9);
     light.castShadow = true;
 
     scene.add(light);
@@ -107,9 +107,9 @@ form.addEventListener('submit', (event) => {
     scene.add(light_2);
 
 
-    //const helper = new THREE.CameraHelper(light.shadow.camera);
-    //const helper2 = new THREE.CameraHelper(light_2.shadow.camera);
-    //scene.add(helper, helper2);
+    const helper = new THREE.CameraHelper(light.shadow.camera);
+    const helper2 = new THREE.CameraHelper(light_2.shadow.camera);
+    scene.add(helper, helper2);
 
     camera.position.set(0, 4, 30);
     camera.rotation.x = 0.2;
