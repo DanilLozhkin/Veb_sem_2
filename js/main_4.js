@@ -67,12 +67,7 @@ form.addEventListener('submit', (event) => {
         4.322220, 0.000000, 0.000000,
         0.000000, 0.000000, 8.550000
     ])
-    let normalized = new Float32Array([
-        -0.000000, 0.000000, -1.000000,
-        0.484754, 0.839620, 0.245054,
-        -0.969509, 0.000000, 0.245055,
-        0.484754, -0.839620, 0.245054
-    ])
+  
 
 
     mesh_3.setAttribute('position', new THREE.BufferAttribute(vertices_3, 3));
@@ -85,13 +80,13 @@ form.addEventListener('submit', (event) => {
     scene.add(pyramid);
 
 
-    function render() {
-        requestAnimationFrame(render);
-        //cube.rotation.y += 0.01;
-        //scene.rotation.y += 0.005;
-        renderer.render(scene, camera);
-    }
-    render();
+    // function render() {
+    //     requestAnimationFrame(render);
+    //     //cube.rotation.y += 0.01;
+    //     //scene.rotation.y += 0.005;
+    //     renderer.render(scene, camera);
+    // }
+    // render();
 
     //свет 1
     let light = new THREE.PointLight(0xffffff, litning_1.value);

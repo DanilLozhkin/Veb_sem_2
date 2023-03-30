@@ -2,8 +2,8 @@
 const http = require('http');
 const { parse } = require('querystring');
 
-let date='';
-
+let date='',date_2="<table>";
+let count=0;
 const hostname = '127.0.0.1';
 const PORT = 3000;
 
@@ -11,9 +11,11 @@ const server = http.createServer((req, res) => {
     console.log(req.method,req.url,"/",req.httpVersion );
     console.log("HOST:",req.socket.address().address, ":",req.socket.address().port);
     if(req.method=='GET'){
-        res.end(`HI`);
+        //res.end(`HI`);
         if(req.url=="/stats"){
-            
+            count+=1;
+            date_2+=`<tr><th>user</th><th>${count}</th></tr>`
+            res.end(date_2);
         }
     }else if(req.method=='POST'){
         if(req.url=="/comments"){
