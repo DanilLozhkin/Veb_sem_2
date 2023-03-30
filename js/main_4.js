@@ -107,9 +107,9 @@ form.addEventListener('submit', (event) => {
     scene.add(light_2);
 
 
-    const helper = new THREE.CameraHelper(light.shadow.camera);
-    const helper2 = new THREE.CameraHelper(light_2.shadow.camera);
-    scene.add(helper, helper2);
+    // const helper = new THREE.CameraHelper(light.shadow.camera);
+    // const helper2 = new THREE.CameraHelper(light_2.shadow.camera);
+    // scene.add(helper, helper2);
 
     camera.position.set(0, 4, 30);
     camera.rotation.x = 0.2;
