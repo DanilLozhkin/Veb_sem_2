@@ -2,10 +2,10 @@
   "name": "node-js",
   "version": "1.0.0",
   "description": "",
-  "serve": "js/main_5.js",
+  "serve": "public/app.js",
   "scripts": {
-    "start": "node js/main_5.js",
-    "dev": "nodemon js/main_5.js"
+    "start": "node public/app.js",
+    "dev": "nodemon public/app.js"
   },
   "repository": {
     "type": "git",
