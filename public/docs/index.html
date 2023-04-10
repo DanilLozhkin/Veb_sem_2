@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>awsm.css</title>
+    <link rel="stylesheet" href="css/awsm.min.css" id="theme">
+    <link rel="stylesheet" id="preload-theme">
+    <link rel="stylesheet" id="prism-theme">
+    <meta property="og:title" content="awsm.css">
+    <meta property="og:description" content="Simple CSS library for semantic HTML markup">
+    <meta property="og:image" content="https://igoradamenko.github.io/awsm.css/images/cover.png">
+    <meta property="og:url" content="https://igoradamenko.github.io/awsm.css/">
+    <meta name="twitter:card" content="summary_large_image">
+    <script>
+      if (location.hostname === 'localhost') localStorage.clear();
+      
+      var version = '3.0.7';
+      var storedVersion = localStorage.getItem('awsm-version');
+      
+      if (version !== storedVersion) {
+        localStorage.removeItem('awsm-current-theme');
+        localStorage.setItem('awsm-version', version);
+      }
+      
+      var currentTheme = localStorage.getItem('awsm-current-theme');
+      reloadTheme(currentTheme);
+      
+      function reloadTheme(theme) {
+        var themeNode = document.getElementById('theme');
+        var themePreloadNode = document.getElementById('preload-theme');
+      
+        themePreloadNode.onload = onPreloadThemeLoad.bind(null, theme);
+        themePreloadNode.setAttribute('href', getThemePath(theme));
+      
+        if (window.isPrismThemeShouldBeLoaded) {
+          var prismThemeNode = document.getElementById('prism-theme');
+          prismThemeNode.setAttribute('href', getPrismThemePath(theme));
+        }
+      }
+      
+      function onPreloadThemeLoad(theme) {
+        var themeNode = document.getElementById('theme');
+        var themePreloadNode = document.getElementById('preload-theme');
+        
+        themePreloadNode.onload = null;
+      
+        themeNode.remove();
+        themePreloadNode.setAttribute('id', 'theme');
+        themeNode = themePreloadNode;
+      
+        var themePreloadNodeNew = document.createElement('link');
+        themePreloadNodeNew.setAttribute('id', 'preload-theme');
+        themePreloadNodeNew.setAttribute('rel', 'stylesheet');
+      
+        themeNode.insertAdjacentElement('afterend', themePreloadNodeNew);
+        localStorage.setItem('awsm-current-theme', theme);
+      }
+      
+      function getThemePath(theme) {
+        if (!theme) return 'css/awsm.min.css';
+        return 'css/awsm_theme_' + theme + '.min.css';
+      }
+      
+      function getPrismThemePath(theme) {
+        var themeToPrismTheme = JSON.parse('{"white":"","gondola":"tomorrow","mischka":"okaidia","big-stone":"tomorrow","black":"","tasman":"","pastel-pink":"","pearl-lusta":"solarizedlight"}');
+        var prismTheme = themeToPrismTheme[theme];
+        return 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/themes/prism' + (prismTheme ? ('-' + prismTheme) : '') + '.min.css';
+      }
+      
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>awsm.css</h1>
+      <p>It makes your <abbr title="HyperText Markup Language is the standard markup language for creating web pages and web applications.">HTML</abbr> beautiful
+      </p>
+      <nav>
+        <ul>
+          <li>Overview</li>
+          <li><a href="elements.html">Elements</a></li>
+          <li><a href="download.html">Download</a></li>
+          <li><a href="plugins.html">Plugins</a></li>
+          <li><a href="https://github.com/igoradamenko/awsm.css" target="_blank">GitHub</a></li>
+          <li>
+            <select id="theme-changer" onchange="reloadTheme(this.value)">
+              <option value="white" selected>white</option>
+              <option value="gondola">gondola</option>
+              <option value="mischka">mischka</option>
+              <option value="big-stone">big-stone</option>
+              <option value="black">black</option>
+              <option value="tasman">tasman</option>
+              <option value="pastel-pink">pastel-pink</option>
+              <option value="pearl-lusta">pearl-lusta</option>
+            </select>
+            <script>
+              if (currentTheme && currentTheme !== 'white') {
+                document.getElementById('theme-changer').value = currentTheme;
+              }
+              
+            </script>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <article>
+        <section>
+          <h2><a id="wtf" href="#wtf" aria-hidden="true"></a>What is it?
+          </h2>
+          <p>awsm.css is a <abbr title="Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language.">CSS</abbr> library for beautify <a href="http://www.w3schools.com/html/html5_semantic_elements.asp" title="HTML5 Semantic Elements" target="_blank">semantic</a> <abbr title="HyperText Markup Language is the standard markup language for creating web pages and web applications.">HTML</abbr> markup without classes, attributes, etc. Use tags only.
+          </p>
+          <p>The library is the best choice for a blog, your homepage or a site about a project.</p>
+        </section>
+        <section>
+          <h2><a id="usage" href="#usage" aria-hidden="true"></a>Usage
+          </h2>
+          <pre><code>&lt;link rel="stylesheet" href="awsm.min.css"&gt;</code></pre>
+          <p>Also don't forget to add viewport info to <code>&lt;head&gt;</code> section for adaptation to mobile. Like this:
+          </p>
+          <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+          <p>It's also available as the <a href="https://www.npmjs.com/package/awsm.css" title="awsm.css in npm registry" target="_blank">npm package</a>, which supports <a href="download.html#postcss" title="Example of usage as PostCSS plugin">PostCSS API</a>.
+          </p>
+        </section>
+        <section>
+          <h2><a id="why" href="#why" aria-hidden="true"></a>Why?
+          </h2>
+          <p>I had to create simple pages in my daily work. Sometimes it was compiled Markdown, sometimes pure <abbr title="HyperText Markup Language is the standard markup language for creating web pages and web applications.">HTML</abbr>.
+            I'd like to make them more beautiful without additional classes, ids, etc. So I did it.
+          </p>
+        </section>
+      </article>
+    </main>
+    <footer>
+      <p>Igor Adamenko</p>
+    </footer>
+    <!--                                                                                 -->
+    <!--                      ."-,.__                                                    -->
+    <!--                      `.     `.  ,                                               -->
+    <!--                   .--'  .._,'"-' `.                                             -->
+    <!--                  .    .'         `'                                             -->
+    <!--                  `.   /          ,'                                             -->
+    <!--                    `  '--.   ,-"'                                               -->
+    <!--                     `"`   |  \                                                  -->
+    <!--                        -. \, |                                                  -->
+    <!--                         `--Y.'      ___.                                        -->
+    <!--                              \     L._, \                                       -->
+    <!--                    _.,        `.   <  <\                _                       -->
+    <!--                  ,' '           `, `.   | \            ( `                      -->
+    <!--               ../, `.            `  |    .\`.           \ \_                    -->
+    <!--              ,' ,..  .           _.,'    ||\l            )  '".                 -->
+    <!--             , ,'   \           ,'.-.`-._,'  |           .  _._`.                -->
+    <!--           ,' /      \ \        `' ' `--/   | \          / /   ..\               -->
+    <!--         .'  /        \ .         |\__ - _ ,'` `        / /     `.`.             -->
+    <!--         |  '          ..         `-...-"  |  `-'      / /        . `.           -->
+    <!--         | /           |L__           |    |          / /          `. `.         -->
+    <!--        , /            .   .          |    |         / /             ` `         -->
+    <!--       / /          ,. ,`._ `-_       |    |  _   ,-' /               ` \        -->
+    <!--      / .           \"`_/. `-_ \_,.  ,'    +-' `-'  _,        ..,-.    \`.       -->
+    <!--     .  '         .-f    ,'   `    '.       \__.---'     _   .'   '     \ \      -->
+    <!--     ' /          `.'    l     .' /          \..      ,_|/   `.  ,'`     L`      -->
+    <!--     |'      _.-""` `.    \ _,'  `            \ `.___`.'"`-.  , |   |    | \     -->
+    <!--     ||    ,'      `. `.   '       _,...._        `  |    `/ '  |   '     .|     -->
+    <!--     ||  ,'          `. ;.,.---' ,'       `.   `.. `-'  .-' /_ .'    ;_   ||     -->
+    <!--     || '              V      / /           `   | `   ,'   ,' '.    !  `. ||     -->
+    <!--     ||/            _,-------7 '              . |  `-'    l         /    `||     -->
+    <!--     . |          ,' .-   ,' ||               | .-.        `.      .'     ||     -->
+    <!--      `'        ,'    `".'    |               |    `.        '. -.'       `'     -->
+    <!--               /      ,'      |               |,'    \-.._,.'/'                  -->
+    <!--               .     /        .               .       \    .''                   -->
+    <!--             .`.    |         `.             /         :_,'.'                    -->
+    <!--               \ `...\   _     ,'-.        .'         /_.-'                      -->
+    <!--                `-.__ `,  `'   .  _.>----''.  _  __  /                           -->
+    <!--                     .'        /"'          |  "'   '_                           -->
+    <!--                    /_|.-'\ ,".             '.'`__'-( \                          -->
+    <!--                      / ,"'"\,'               `/  `-.|" mh                       -->
+    <!--                                                                                 -->
+    <!--                          awsm.css v3.0.0 “Charizard”                            -->
+    <!--                                                                                 -->
+  </body>
+</html>

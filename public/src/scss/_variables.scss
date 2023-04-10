@@ -1,0 +1,58 @@
+//- Maps
+
+$font-map: (
+  'mono': (Consolas, 'Lucida Console', Monaco, monospace),
+  'sans': (system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'PT Sans', 'Open Sans', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif),
+);
+
+$size-map: (
+  'font-min': 1rem, // 16px
+  'font-max': 1.125rem, // 18px
+  'line-height-min': 1.2,
+  'line-height-max': 1.4,
+  'width-min': 20rem, // 320px / 16px
+  'width-max': 40rem, // 640px / 16px
+);
+
+// theme colors passed from build system and got from /themes.js
+$color-map: (
+  'primary': theme-color('primary'),
+  'secondary': theme-color('secondary'),
+  'stealthy': theme-color('stealthy'),
+  'invisible': theme-color('invisible'),
+  'selection-base': theme-color('selection-base'),
+  'link': theme-color('link'),
+  'link-hover': theme-color('link-hover'),
+  'link-visited': theme-color('link-visited'),
+  'alarm': theme-color('alarm'),
+);
+
+//- Functions
+
+@function font($key) {
+  @return map-get($font-map, $key);
+}
+
+@function size($key) {
+  @return map-get($size-map, $key);
+}
+
+@function color($key) {
+  @return map-get($color-map, $key);
+}
+
+//- Mixins
+
+@mixin placeholder {
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
