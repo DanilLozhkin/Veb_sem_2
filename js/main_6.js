@@ -6,10 +6,10 @@ let date = '', date_2 = "<table>";
 let count = 0;
 let params, json;
 
+router.use(express.static('public'));
+
 router.route('/').get((req,res) =>{
     res.end("Hi")
-    console.log(req.method, req.url, "/", req.httpVersion);
-    console.log("HOST:", req.socket.address().address, ":", req.socket.address().port);
 }).post((req,res) =>{
     res.end(`400 Bad Request`)
 })
