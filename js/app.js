@@ -4,12 +4,14 @@ const router = require('./main_6');
 
 // let name=[];
 app.use(express.static('public'));
+
 app.use(express.json())
 
-// app.use('/user',(req,res,next) => {
-    
-//     next()
-// })
+app.use((req,res,next) => {
+    console.log(req.method, req.url, "/", req.httpVersion);
+    console.log("HOST:", req.socket.address().address, ":", req.socket.address().port);
+    next()
+})
 
 app.use('/', router)
 
