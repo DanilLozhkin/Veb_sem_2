@@ -33,6 +33,14 @@
         <li>POST запрос: "/comments"</li>
         <li>ответ: "{"dasda":"ccc","ssd":"dda"}"</li>
     </ul>
+    <ul>
+        <li>GET запрос: "/api/users?apiKey=myApiKey&id=123"</li>
+        <li>ответ: "{"user":"123"}"</li>
+    </ul>
+    <ul>
+        <li>GET запрос: "/api/users?apiKey=11111111&id=123"</li>
+        <li>ответ: "{"message":"400 ошибка аворизации"}"</li>
+    </ul>
 </body>
 
 </html>
