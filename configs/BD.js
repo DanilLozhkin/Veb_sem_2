@@ -16,4 +16,13 @@ module.exports = {
             })
     },
     getDb: () => dbConnection,
+    // findToArray: (collectionName, query) => {
+    //     return dbConnection.collection(collectionName).find(query).toArray();
+    // },
+    // findOne: (collectionName, query) => {
+    //     return dbConnection.collection(collectionName).findOne(query);
+    // },
+    // insertOne: (collectionName, document) => {
+    //     return dbConnection.collection(collectionName).insertOne(document);
+    // }
 }
