@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 
-const URL = 'mongodb://localhost:272222222/moviebox';
+const URL = 'mongodb://localhost:27017/moviebox';
 
 let dbConnection;
 
