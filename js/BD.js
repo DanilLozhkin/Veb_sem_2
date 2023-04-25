@@ -1,18 +1,19 @@
-const { MongoClient } = require('mongodb');
-
-const URL = 'mongodb://localhost:27017/moviebox';
+const { MongoClient } = require('mongodb'); 
 
 let dbConnection;
 
 module.exports = {
-    connectToDB: (cd) => {
-        MongoClient
-            .connect(URL)
+    connectToDB: (cb) => {
+        MongoClient.connect(`mongodb://127.0.0.1:27017/local`)
             .then((client) => {
+                console.log('Connect to BD');
                 dbConnection = client.db();
-                return cd();
+                return cb();
             })
-            .catch()
+            .catch((err) => {
+                console.log('error BD');
+                return cb(err);
+            })
     },
     getDb: () => dbConnection,
 }

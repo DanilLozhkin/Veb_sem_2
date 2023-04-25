@@ -2,9 +2,12 @@
 const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
+const { connectToDB, getDb } = require('./BD'); 
 
 const app = express();
 const router = require('./main_6');
+
+let db;
 
 app.disable('x-powered-by');
 app.use(helmet())
@@ -36,9 +39,16 @@ app.get('/api/users', Key, function (req, res) {
     });
 });
 
+
+
 const hostname = '127.0.0.1';
 const PORT = 3000;
 
-app.listen(PORT, hostname, () => {
-    console.log("OK server");
+connectToDB((err)=> {
+    if (!err) {
+        app.listen(PORT, hostname, () => {
+            console.log("OK server");
+        });
+        db = getDb();
+    }
 });
