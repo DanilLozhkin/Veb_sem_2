@@ -6,31 +6,27 @@ router2.use(express.json())
 
 
 const { findToArray, findOne, insertOne } = require('../services/servis');
-//const { findToArray } = require('../configs/BD'); 
 router2.use(express.static('public'));
 
-router2.get('/comments', (req, res) => {
-    findToArray().then(data => {
+router2.get('/comments',async (req, res) => {
+    const data = await findToArray();
         res.status(200).json(data);
-    })
 });
 
-router2.get('/comments/:id', (req, res) => {
+router2.get('/comments/:id',async (req, res) => {
     const id = req.params.id;
     if (ObjectId.isValid(id)) {
-        findOne(id).then(data => {
-            res.status(200).json(data);
-        })
+        // findOne(id).then(data => {
+        //     res.status(200).json(data);
+        // })
+        const data = await findOne(id);
+        res.status(200).json(data);
     } else {
-        res.status(404).send("404")
+        res.status(404).send("404 ошибка")
     }
 });
 
 router2.post('/comments', (req, res) => {
-    // const { title, director,year,genres,rating } = req.body;
-    // //console.log({ title, director,year,genres, rating});
-    // insertOne({ title, director,year,genres, rating});
-    // res.json()
     const { name, commit } = req.body;
 
     const now = new Date();
