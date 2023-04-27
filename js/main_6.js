@@ -24,18 +24,18 @@ router.get('/stats', (req, res) => {
 
 
 
-router.post('/comments', (req, res) => {
-    let body = '';
-    req.on('data', chunk => {
-        body += chunk;
-    });
-    req.on('end', () => {
-        params = parse(body);
+// router.post('/comments', (req, res) => {
+//     let body = '';
+//     req.on('data', chunk => {
+//         body += chunk;
+//     });
+//     req.on('end', () => {
+//         params = parse(body);
 
-        json = JSON.stringify(params);
-        date += json + ' ';
-        res.end(date);
-    });
-});
+//         json = JSON.stringify(params);
+//         date += json + ' ';
+//         res.end(date);
+//     });
+// });
 
 module.exports = router;

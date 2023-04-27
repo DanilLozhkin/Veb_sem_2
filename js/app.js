@@ -2,10 +2,12 @@
 const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
-const { connectToDB, getDb } = require('../configs/BD'); 
+const { connectToDB} = require('../configs/BD'); 
 
 const app = express();
 const router = require('./main_6');
+const router2 = require('../controllers/controll');
+
 
 app.disable('x-powered-by');
 app.use(helmet())
@@ -28,6 +30,8 @@ app.use((req, res, next) => {
 app.use(morgan('dev'));
 
 app.use('/', router);
+app.use('/', router2);
+
 
 
 app.get('/api/users', Key, function (req, res) {
